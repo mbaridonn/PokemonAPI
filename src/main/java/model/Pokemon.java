@@ -1,4 +1,4 @@
-package main;
+package model;
 
 import lombok.Data;
 
@@ -16,7 +16,7 @@ public class Pokemon {
 	
 	Pokemon() {}
 	
-	Pokemon(String name, String type) {
+	public Pokemon(String name, String type) {
 	    this.name = name;
 	    this.type = type;
 	  }
