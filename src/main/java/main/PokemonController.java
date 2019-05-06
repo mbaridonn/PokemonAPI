@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import model.Pokemon;
 
 @RestController
-class PokemonController {
+public class PokemonController {
 
   private final PokemonRepository repository;
 
