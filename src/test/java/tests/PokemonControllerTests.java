@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.hamcrest.Matchers.*;
 
 import main.PokemonApplication;
-import model.Pokemon;
+import main.model.Pokemon;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PokemonApplication.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)

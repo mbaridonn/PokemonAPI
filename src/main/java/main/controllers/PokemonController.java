@@ -1,4 +1,4 @@
-package main;
+package main.controllers;
 
 import java.util.List;
 
@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Pokemon;
+import main.exceptions.PokemonNotFoundException;
+import main.model.Pokemon;
+import main.repositories.PokemonRepository;
 
 @RestController
 public class PokemonController {
