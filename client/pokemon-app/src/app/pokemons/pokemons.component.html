@@ -1,3 +1,7 @@
-<div *ngFor="let pokemon of pokemons">
-  <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
-</div>
+<mat-grid-list cols="3" rowHeight="500px" rowWidth="200px">
+  <div *ngFor="let pokemon of pokemons">
+    <mat-grid-tile>
+      <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+    </mat-grid-tile>
+  </div>
+</mat-grid-list>
