@@ -27,9 +27,9 @@ public class PokemonControllerTests {
 	@Test
 	public void getPokemons() throws Exception {
 	 
-	    Pokemon charmander = new Pokemon("Charmander","fire");
-	    Pokemon squirtle = new Pokemon("Squirtle","water");
-	    Pokemon bulbasaur = new Pokemon("Bulbasaur","plant");
+	    Pokemon charmander = new Pokemon("Charmander","fire", null);
+	    Pokemon squirtle = new Pokemon("Squirtle","water", null);
+	    Pokemon bulbasaur = new Pokemon("Bulbasaur","plant", null);
 	 
 	    mvc.perform(get("/pokemons")
 	      .contentType(MediaType.APPLICATION_JSON))
@@ -44,7 +44,7 @@ public class PokemonControllerTests {
 	@Test
 	public void postPokemon() throws Exception {
 		
-		Pokemon pikachu = new Pokemon("Pikachu", "electric");
+		Pokemon pikachu = new Pokemon("Pikachu", "electric", null);
 		byte[] pikachuJson = toJson(pikachu);
 		
 		mvc.perform(post("/pokemons")
