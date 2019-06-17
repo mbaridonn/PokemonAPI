@@ -31,11 +31,10 @@ export class PokemonDialog {
     photoURL: ""
   };
 
-  constructor(private pokemonService: PokemonsService, private pokemonsComponent: PokemonsComponent) { }
+  constructor(private pokemonsComponent: PokemonsComponent) { }
 
   createPokemon() {
     this.pokemonsComponent.addPokemon(this.pokemon);
-    this.pokemonService.addPokemon(this.pokemon);
   }
 
 }
