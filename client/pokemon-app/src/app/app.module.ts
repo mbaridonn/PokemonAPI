@@ -1,4 +1,4 @@
-import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatGridListModule, MatDialogModule, MatFormFieldModule} from '@angular/material';
+import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatGridListModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -8,6 +8,8 @@ import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { PokemonsComponent } from './pokemons/pokemons.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewPokemonDialogComponent, PokemonDialog } from './new-pokemon-dialog/new-pokemon-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { PokemonsService } from 'src/services/pokemons-service';
 
 @NgModule({
   declarations: [
@@ -29,9 +31,11 @@ import { NewPokemonDialogComponent, PokemonDialog } from './new-pokemon-dialog/n
     HttpClientModule,
     MatGridListModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [PokemonsService, PokemonsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

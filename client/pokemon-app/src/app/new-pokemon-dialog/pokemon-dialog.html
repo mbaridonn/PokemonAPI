@@ -1,10 +1,19 @@
-<h1 mat-dialog-title>Hi</h1>
-<div mat-dialog-content>
-    <mat-form-field>
-        <input matInput>
-      </mat-form-field>
+<h1 mat-dialog-title>Create your Pokemon</h1>
+<div mat-dialog-content *ngIf="pokemon">
+  <p>Name:</p>
+  <mat-form-field>
+    <input matInput name="name" [(ngModel)]="pokemon.name">
+  </mat-form-field>
+  <p>Type:</p>
+  <mat-form-field>
+    <input matInput name="type" [(ngModel)]="pokemon.type">
+  </mat-form-field>
+  <p>Photo URL:</p>
+  <mat-form-field>
+    <input matInput name="photoURL" [(ngModel)]="pokemon.photoURL">
+  </mat-form-field>
 </div>
 <div mat-dialog-actions>
-    <button mat-button>No Thanks</button>
-    <button mat-button cdkFocusInitial>Ok</button>
-  </div>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button cdkFocusInitial (click)="createPokemon()" [mat-dialog-close]="true">Ok</button>
+</div>

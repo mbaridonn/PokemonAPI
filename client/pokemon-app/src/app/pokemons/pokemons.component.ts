@@ -5,8 +5,7 @@ import { PokemonsService } from 'src/services/pokemons-service';
 @Component({
   selector: 'app-pokemons',
   templateUrl: './pokemons.component.html',
-  styleUrls: ['./pokemons.component.css'],
-  providers: [PokemonsService]
+  styleUrls: ['./pokemons.component.css']
 })
 export class PokemonsComponent implements OnInit {
 
@@ -18,8 +17,14 @@ export class PokemonsComponent implements OnInit {
   ngOnInit() {
     this.pokemonService.getPokemons().subscribe(
       pokemons => {this.pokemons = pokemons},
-      error => this.errorMessage = <any>error
+      error => this.errorMessage = <any>error,
     );
+    console.log("NG-ON-INIT");
+  }
+
+  addPokemon(pokemon: IPokemon){
+    this.pokemons.push(pokemon);
+    console.log(this.pokemons);
   }
 
 }

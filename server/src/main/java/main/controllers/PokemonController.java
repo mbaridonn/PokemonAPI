@@ -15,7 +15,7 @@ import main.exceptions.PokemonNotFoundException;
 import main.model.Pokemon;
 import main.repositories.PokemonRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 public class PokemonController {
 
