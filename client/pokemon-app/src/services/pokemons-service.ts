@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of } from "rxjs";
-import { catchError, tap, map } from 'rxjs/operators';
+import { Observable, throwError, of} from "rxjs";
+import { catchError, tap} from 'rxjs/operators';
 import { IPokemon } from "src/model/ipokemon";
 import { Injectable } from '@angular/core';
 
@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 export class PokemonsService {
   private pokemonUrl = "http://localhost:8080/pokemons";
   private pokemons: IPokemon[];
+
 
   constructor(private http: HttpClient) {
     this.getPokemons().subscribe(pokemons => {

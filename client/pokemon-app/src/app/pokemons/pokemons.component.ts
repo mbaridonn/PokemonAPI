@@ -22,10 +22,7 @@ export class PokemonsComponent implements OnInit {
   }
 
   addPokemon(pokemon: IPokemon){
-    //test
-    console.log("ABAJO");
-    this.pokemonsService.getPokemons().subscribe(pokemons =>
-      {console.log(pokemons);});
+    this.pokemonsService.addPokemon(pokemon);
   }
 
 }
