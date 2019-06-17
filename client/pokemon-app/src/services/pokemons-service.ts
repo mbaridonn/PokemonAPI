@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from "rxjs";
+import { Observable, throwError, of } from "rxjs";
 import { catchError, tap, map } from 'rxjs/operators';
 import { IPokemon } from "src/model/ipokemon";
 import { Injectable } from '@angular/core';
@@ -9,20 +9,30 @@ import { Injectable } from '@angular/core';
 })
 export class PokemonsService {
   private pokemonUrl = "http://localhost:8080/pokemons";
+  private pokemons: IPokemon[];
 
-  constructor(private http: HttpClient) { }
-
-  getPokemons(): Observable<IPokemon[]> {
-    return this.http.get<IPokemon[]>(this.pokemonUrl).pipe(
-      tap(data => console.log('All: ' + JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+  constructor(private http: HttpClient) {
+    this.getPokemons().subscribe(pokemons => {
+      this.pokemons = pokemons;
+    });
   }
 
-  addPokemon(pokemon: IPokemon){
-    return this.http.post(this.pokemonUrl, pokemon).subscribe(
-      success => {console.log(pokemon + " created!")},
-      error => {this.handleError(error)}
+  getPokemons(): Observable<IPokemon[]> {
+    if (this.pokemons) {
+      return of(this.pokemons);
+    } else {
+      return this.http.get<IPokemon[]>(this.pokemonUrl).pipe(
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+    }
+  }
+
+  addPokemon(pokemon: IPokemon) {
+    this.pokemons.push(pokemon);
+    this.http.post(this.pokemonUrl, pokemon).subscribe(
+      success => { },
+      error => { this.handleError(error) }
     );
   }
 

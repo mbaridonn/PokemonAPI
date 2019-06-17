@@ -5,26 +5,27 @@ import { PokemonsService } from 'src/services/pokemons-service';
 @Component({
   selector: 'app-pokemons',
   templateUrl: './pokemons.component.html',
-  styleUrls: ['./pokemons.component.css'],
-  providers: [PokemonsService]
+  styleUrls: ['./pokemons.component.css']
 })
 export class PokemonsComponent implements OnInit {
 
-  pokemons: IPokemon[] = [];
+  private pokemons: IPokemon[];
   errorMessage: String;
 
-  constructor(private pokemonService:PokemonsService) { }
+  constructor(private pokemonsService:PokemonsService) { }
 
   ngOnInit() {
-    this.pokemonService.getPokemons().subscribe(
+    this.pokemonsService.getPokemons().subscribe(
       pokemons => {this.pokemons = pokemons},
       error => this.errorMessage = <any>error,
     );
   }
 
   addPokemon(pokemon: IPokemon){
-    this.pokemons.push(pokemon);
-    this.pokemonService.addPokemon(pokemon);
+    //test
+    console.log("ABAJO");
+    this.pokemonsService.getPokemons().subscribe(pokemons =>
+      {console.log(pokemons);});
   }
 
 }

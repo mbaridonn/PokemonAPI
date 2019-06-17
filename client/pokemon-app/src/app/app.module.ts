@@ -9,6 +9,7 @@ import { PokemonsComponent } from './pokemons/pokemons.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewPokemonDialogComponent, PokemonDialog } from './new-pokemon-dialog/new-pokemon-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { PokemonsService } from 'src/services/pokemons-service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     FormsModule
   ],
-  providers: [PokemonsComponent],
+  providers: [PokemonsComponent, PokemonsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
