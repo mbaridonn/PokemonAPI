@@ -1,14 +1,61 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of} from "rxjs";
-import { catchError, tap} from 'rxjs/operators';
+import { Observable, throwError, of, BehaviorSubject } from "rxjs";
+import { catchError, tap } from 'rxjs/operators';
 import { IPokemon } from "src/model/ipokemon";
 import { Injectable } from '@angular/core';
+
+export const DUMMY_DATA = [
+  {
+    name: 'Bulbasaur',
+    type: 'Plant',
+    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png'
+  },
+  {
+    name: 'Ivysaur',
+    type: 'Plant',
+    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png'
+  },
+  {
+    name: 'Venusaur',
+    type: 'Plant',
+    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png'
+  }
+];
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonsService {
-  private pokemonUrl = "http://localhost:8080/pokemons";
+  private pokemonsSubject = new BehaviorSubject([]);
+  private pokemons: IPokemon[];
+
+  constructor() { }
+
+  getPokemons(): Observable<IPokemon[]> {
+    this.loadDummyData();
+    return this.pokemonsSubject.asObservable();
+  }
+
+  private refresh() {
+    // Emitir los nuevos valores para que todos los que dependan se actualicen.
+    this.pokemonsSubject.next(this.pokemons);
+  }
+
+  createPokemon(pokemon: IPokemon) {
+    /**
+    * Evitar hacer this.user.push() pues estarĂ­amos modificando los valores directamente,
+    * se debe generar un nuevo array !!!!.
+    */
+    this.pokemons = [...this.pokemons, pokemon];
+    this.refresh();
+  }
+
+  loadDummyData() {
+    this.pokemons = DUMMY_DATA;
+    this.refresh();
+  }
+
+  /*private pokemonUrl = "http://localhost:8080/pokemons";
   private pokemons: IPokemon[];
 
 
@@ -52,5 +99,5 @@ export class PokemonsService {
     console.error(errorMessage);
     return throwError(errorMessage);
   }
-
+*/
 }
