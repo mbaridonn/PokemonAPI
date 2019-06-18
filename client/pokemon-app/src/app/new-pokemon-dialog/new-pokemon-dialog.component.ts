@@ -1,8 +1,7 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
-import { PokemonsService } from 'src/services/pokemons-service';
 import { IPokemon } from 'src/model/ipokemon';
-import { PokemonsComponent } from '../pokemons/pokemons.component';
+import { PokemonsRepository } from 'src/repositories/pokemons-repository';
 
 @Component({
   selector: 'app-new-pokemon-dialog',
@@ -31,10 +30,10 @@ export class PokemonDialog {
     photoURL: ""
   };
 
-  constructor(private pokemonsComponent: PokemonsComponent) { }
+  constructor(private pokemonsRepository: PokemonsRepository) { }
 
   createPokemon() {
-    this.pokemonsComponent.createPokemon(this.pokemon);
+    this.pokemonsRepository.createPokemon(this.pokemon);
   }
 
 }

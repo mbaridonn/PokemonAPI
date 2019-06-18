@@ -23,7 +23,7 @@ export const DUMMY_DATA = [
 @Injectable({
   providedIn: 'root'
 })
-export class PokemonsService {
+export class PokemonsRepository {
   private pokemonsSubject = new BehaviorSubject([]);
   private pokemons: IPokemon[];
 

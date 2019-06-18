@@ -1,26 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { IPokemon } from 'src/model/ipokemon';
-import { PokemonsService } from 'src/services/pokemons-service';
 import { Observable } from 'rxjs';
+import { PokemonsRepository } from 'src/repositories/pokemons-repository';
+import { IPokemon } from 'src/model/ipokemon';
 
 @Component({
   selector: 'app-pokemons',
   templateUrl: './pokemons.component.html',
   styleUrls: ['./pokemons.component.css']
 })
-export class PokemonsComponent implements OnInit {
+export class PokemonsComponent {
 
-  private pokemons$: Observable<any[]>;
+  private pokemons$: Observable<IPokemon[]>;
 
-  constructor(private pokemonsService: PokemonsService) { 
-    this.pokemons$ = this.pokemonsService.getPokemons();
-  }
-
-  ngOnInit() {
-  }
-
-  createPokemon(pokemon: IPokemon) {
-    this.pokemonsService.createPokemon(pokemon);
+  constructor(private pokemonsRepository: PokemonsRepository) {
+    this.pokemons$ = this.pokemonsRepository.getPokemons();
   }
 
 }
