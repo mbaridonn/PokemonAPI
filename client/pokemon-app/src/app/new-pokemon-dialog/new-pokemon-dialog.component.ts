@@ -34,7 +34,7 @@ export class PokemonDialog {
   constructor(private pokemonsComponent: PokemonsComponent) { }
 
   createPokemon() {
-    this.pokemonsComponent.addPokemon(this.pokemon);
+    this.pokemonsComponent.createPokemon(this.pokemon);
   }
 
 }

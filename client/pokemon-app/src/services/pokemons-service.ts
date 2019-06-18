@@ -1,6 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, of, BehaviorSubject } from "rxjs";
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from "rxjs";
 import { IPokemon } from "src/model/ipokemon";
 import { Injectable } from '@angular/core';
 
@@ -29,23 +27,19 @@ export class PokemonsService {
   private pokemonsSubject = new BehaviorSubject([]);
   private pokemons: IPokemon[];
 
-  constructor() { }
+  constructor() { 
+    this.loadDummyData();
+  }
 
   getPokemons(): Observable<IPokemon[]> {
-    this.loadDummyData();
     return this.pokemonsSubject.asObservable();
   }
 
   private refresh() {
-    // Emitir los nuevos valores para que todos los que dependan se actualicen.
     this.pokemonsSubject.next(this.pokemons);
   }
 
   createPokemon(pokemon: IPokemon) {
-    /**
-    * Evitar hacer this.user.push() pues estarĂ­amos modificando los valores directamente,
-    * se debe generar un nuevo array !!!!.
-    */
     this.pokemons = [...this.pokemons, pokemon];
     this.refresh();
   }
