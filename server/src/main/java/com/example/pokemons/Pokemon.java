@@ -13,6 +13,8 @@ public class Pokemon {
 	private String name;
 	private String type;
 	private String photoURL;
+	private Integer turnsPlayed;
+	private Integer turnsWon;
 	
 	public Integer getId() {
 		return id;
@@ -44,6 +46,22 @@ public class Pokemon {
 	
 	public void setPhotoURL(String photoURL) {
 		this.photoURL = photoURL;
+	}
+
+	public Integer getTurnsPlayed() {
+		return turnsPlayed;
+	}
+
+	public void setTurnsPlayed(Integer turnsPlayed) {
+		this.turnsPlayed = turnsPlayed;
+	}
+
+	public Integer getTurnsWon() {
+		return turnsWon;
+	}
+
+	public void setTurnsWon(Integer turnsWon) {
+		this.turnsWon = turnsWon;
 	}
 	
 }
