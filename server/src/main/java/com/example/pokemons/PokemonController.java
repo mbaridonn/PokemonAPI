@@ -45,6 +45,9 @@ public class PokemonController {
 		return repository.findById(id).map(Pokemon -> {
 			Pokemon.setName(newPokemon.getName());
 			Pokemon.setType(newPokemon.getType());
+			Pokemon.setPhotoURL(newPokemon.getPhotoURL());
+			Pokemon.setTurnsPlayed(newPokemon.getTurnsPlayed());
+			Pokemon.setTurnsWon(newPokemon.getTurnsWon());
 			return repository.save(Pokemon);
 		}).orElseGet(() -> {
 			newPokemon.setId(id);
@@ -76,6 +79,9 @@ public class PokemonController {
 		
 		return randomPokemons;
 	}
+	
+	
+
 	
 	private int generateRandom(int max) {
 		Random random = new Random();
