@@ -1,10 +1,10 @@
-<p>
-  voting works!
-</p>
-<mat-grid-list cols="3" rowHeight="575px">
+<h1 class="centered">
+  Choose one!
+</h1>
+<mat-grid-list cols="2" rowHeight="575px">
   <div *ngFor="let pokemon of pokemons">
     <mat-grid-tile>
-      <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+      <app-pokemon-card [pokemon]="pokemon" [votingEnabled]="true"></app-pokemon-card>
     </mat-grid-tile>
   </div>
 </mat-grid-list>

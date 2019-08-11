@@ -1,4 +1,8 @@
-.example-card {
+.pokemon-card {
     max-width: 325px;
     max-height: 450px;
   }
+.vote-button{
+  text-align: center;
+  margin-top: 10%;
+}

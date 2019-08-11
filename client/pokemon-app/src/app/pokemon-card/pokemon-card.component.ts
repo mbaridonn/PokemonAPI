@@ -11,4 +11,12 @@ export class PokemonCardComponent{
   @Input()
   pokemon: IPokemon;
 
+  @Input()
+  votingEnabled = false;
+
+  hola(){
+    console.log("hola");
+    console.log(this.pokemon.id);
+  }
+
 }

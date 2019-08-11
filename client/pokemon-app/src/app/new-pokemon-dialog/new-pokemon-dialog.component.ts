@@ -27,7 +27,9 @@ export class PokemonDialog {
   pokemon: IPokemon = {
     name: "",
     type: "",
-    photoURL: ""
+    photoURL: "",
+    turnsPlayed: 0,
+    turnsWon: 0
   };
 
   constructor(private pokemonsRepository: PokemonsRepository) { }
