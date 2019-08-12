@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output} from '@angular/core';
 import { IPokemon } from 'src/model/ipokemon';
+import { PokemonsService } from 'src/services/pokemons.service';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -8,15 +10,24 @@ import { IPokemon } from 'src/model/ipokemon';
 })
 export class PokemonCardComponent{
 
+  constructor(private pokemonsService:PokemonsService){}
+
   @Input()
   pokemon: IPokemon;
 
   @Input()
   votingEnabled = false;
 
-  hola(){
-    console.log("hola");
-    console.log(this.pokemon.id);
+  @Input()
+  turn = {isEnded:false};
+
+  votePokemon(){
+    this.addTurnWon(this.pokemon);
+    this.turn.isEnded = true;
+  }
+
+  addTurnWon(pokemon:IPokemon){
+    pokemon.turnsWon = pokemon.turnsWon + 1;
   }
 
 }

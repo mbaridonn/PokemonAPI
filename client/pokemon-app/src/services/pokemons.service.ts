@@ -29,6 +29,13 @@ export class PokemonsService {
     );
   }
 
+  modifyPokemon(pokemon: IPokemon){
+    this.http.put(this.pokemonUrl, pokemon).subscribe(
+      success => { },
+      error => { this.handleError(error) }
+    )
+  }
+
   getRandomPokemons(): Observable<IPokemon[]>{
     return this.http.get<IPokemon[]>(this.randomPokemonsUrl).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),

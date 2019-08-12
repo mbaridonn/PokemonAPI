@@ -4,7 +4,11 @@
 <mat-grid-list cols="2" rowHeight="575px">
   <div *ngFor="let pokemon of pokemons">
     <mat-grid-tile>
-      <app-pokemon-card [pokemon]="pokemon" [votingEnabled]="true"></app-pokemon-card>
+      <app-pokemon-card [pokemon]="pokemon" [votingEnabled]="true" [turn]="turn"></app-pokemon-card>
     </mat-grid-tile>
   </div>
 </mat-grid-list>
+
+<button (click)="prueba()">
+  tocame
+</button>
