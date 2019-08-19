@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { PokemonsService } from 'src/services/pokemons.service';
 import { IPokemon } from 'src/model/ipokemon';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-voting',
   templateUrl: './voting.component.html',
   styleUrls: ['./voting.component.css']
 })
-export class VotingComponent implements OnInit {
+export class VotingComponent implements OnInit, OnChanges {
 
   private pokemons: IPokemon[];
   private errorMessage: String;
@@ -28,17 +27,25 @@ export class VotingComponent implements OnInit {
       this.addTurnPlayed(pokemon);
       this.pokemonsService.modifyPokemon(pokemon);
     });
+    console.log("Turn Ended!");
+    console.log("Valor de isEnded: " + this.turn.isEnded);
     //location.reload(); //refresh page
   }
 
   prueba(){
-    console.log(this.turn.isEnded);
-    this.pokemons.forEach(pokemon=>{console.log(pokemon.turnsWon)});
     this.endTurn();
   }
 
   addTurnPlayed(pokemon:IPokemon){
     pokemon.turnsPlayed = pokemon.turnsPlayed + 1;
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    console.log("Changes:");
+    console.log(changes['this.turn.isEnded'].currentValue);
+    if(changes['this.turn.isEnded'].currentValue){
+      console.log("Changes!");
+    }
   }
 
 }

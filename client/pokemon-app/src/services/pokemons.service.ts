@@ -30,7 +30,7 @@ export class PokemonsService {
   }
 
   modifyPokemon(pokemon: IPokemon){
-    this.http.put(this.pokemonUrl, pokemon).subscribe(
+    this.http.put(this.pokemonUrl + "/" + pokemon.id, pokemon).subscribe(
       success => { },
       error => { this.handleError(error) }
     )
