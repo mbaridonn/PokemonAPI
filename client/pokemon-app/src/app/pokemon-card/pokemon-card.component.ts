@@ -1,7 +1,6 @@
-import { Component, Input, Output} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { IPokemon } from 'src/model/ipokemon';
 import { PokemonsService } from 'src/services/pokemons.service';
-import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -19,11 +18,11 @@ export class PokemonCardComponent{
   votingEnabled = false;
 
   @Input()
-  turn = {isEnded:false};
+  endTurn: Function;
 
   votePokemon(){
     this.addTurnWon(this.pokemon);
-    this.turn.isEnded = true;
+    this.endTurn();
   }
 
   addTurnWon(pokemon:IPokemon){

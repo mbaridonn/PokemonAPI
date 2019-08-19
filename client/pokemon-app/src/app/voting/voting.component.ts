@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { PokemonsService } from 'src/services/pokemons.service';
 import { IPokemon } from 'src/model/ipokemon';
 
@@ -7,11 +7,10 @@ import { IPokemon } from 'src/model/ipokemon';
   templateUrl: './voting.component.html',
   styleUrls: ['./voting.component.css']
 })
-export class VotingComponent implements OnInit, OnChanges {
+export class VotingComponent implements OnInit{
 
   private pokemons: IPokemon[];
   private errorMessage: String;
-  private turn = {isEnded:false}; //refactor to use two way binding between components
 
   constructor(private pokemonsService: PokemonsService) { }
 
@@ -27,25 +26,15 @@ export class VotingComponent implements OnInit, OnChanges {
       this.addTurnPlayed(pokemon);
       this.pokemonsService.modifyPokemon(pokemon);
     });
-    console.log("Turn Ended!");
-    console.log("Valor de isEnded: " + this.turn.isEnded);
-    //location.reload(); //refresh page
+    location.reload(); //refresh page
   }
 
-  prueba(){
-    this.endTurn();
+  get endTurnFunc(){
+    return this.endTurn.bind(this);
   }
 
   addTurnPlayed(pokemon:IPokemon){
     pokemon.turnsPlayed = pokemon.turnsPlayed + 1;
-  }
-
-  ngOnChanges(changes: SimpleChanges){
-    console.log("Changes:");
-    console.log(changes['this.turn.isEnded'].currentValue);
-    if(changes['this.turn.isEnded'].currentValue){
-      console.log("Changes!");
-    }
   }
 
 }
