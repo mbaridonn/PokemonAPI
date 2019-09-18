@@ -5,19 +5,28 @@ import { PokemonsService } from "src/services/pokemons.service";
 
 export const DUMMY_DATA = [
   {
+    id: 1,
     name: 'Bulbasaur',
     type: 'Plant',
-    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png'
+    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png',
+    turnsPlayed: 15,
+    turnsWon: 5
   },
   {
+    id: 2,
     name: 'Ivysaur',
     type: 'Plant',
-    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png'
+    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/002.png',
+    turnsPlayed: 15,
+    turnsWon: 5
   },
   {
+    id: 3,
     name: 'Venusaur',
     type: 'Plant',
-    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png'
+    photoURL: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png',
+    turnsPlayed: 15,
+    turnsWon: 5
   }
 ];
 

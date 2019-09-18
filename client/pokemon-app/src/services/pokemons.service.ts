@@ -10,6 +10,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class PokemonsService {
 
   private pokemonUrl = "http://localhost:8080/pokemons";
+  private randomPokemonsUrl = "http://localhost:8080/randomPokemons";
 
   constructor(private http: HttpClient) {
   }
@@ -25,6 +26,20 @@ export class PokemonsService {
     this.http.post(this.pokemonUrl, pokemon).subscribe(
       success => { },
       error => { this.handleError(error) }
+    );
+  }
+
+  modifyPokemon(pokemon: IPokemon){
+    this.http.put(this.pokemonUrl + "/" + pokemon.id, pokemon).subscribe(
+      success => { },
+      error => { this.handleError(error) }
+    )
+  }
+
+  getRandomPokemons(): Observable<IPokemon[]>{
+    return this.http.get<IPokemon[]>(this.randomPokemonsUrl).pipe(
+      tap(data => console.log('All: ' + JSON.stringify(data))),
+      catchError(this.handleError)
     );
   }
 

@@ -1,0 +1,10 @@
+<h1 class="centered">
+  Choose one!
+</h1>
+<mat-grid-list cols="2" rowHeight="575px">
+  <div *ngFor="let pokemon of pokemons">
+    <mat-grid-tile>
+      <app-pokemon-card [pokemon]="pokemon" [votingEnabled]="true" [endTurn]="endTurnFunc"></app-pokemon-card>
+    </mat-grid-tile>
+  </div>
+</mat-grid-list>
