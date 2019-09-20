@@ -14,10 +14,12 @@ import { PokemonsRepository } from 'src/repositories/pokemons-repository';
 import { PokemonsService } from 'src/services/pokemons.service';
 import { VotingComponent } from './voting/voting.component';
 import { HomeComponent } from './home/home.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const appRoutes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'vote', component: VotingComponent},
-  {path: '', component: HomeComponent}
+  {path: 'leaderboard', component: LeaderboardComponent}
 ]
 
 @NgModule({
@@ -28,7 +30,8 @@ const appRoutes: Routes = [
     NewPokemonDialogComponent,
     PokemonDialog,
     VotingComponent,
-    HomeComponent
+    HomeComponent,
+    LeaderboardComponent
   ],
   entryComponents: [NewPokemonDialogComponent, PokemonDialog],
   imports: [
