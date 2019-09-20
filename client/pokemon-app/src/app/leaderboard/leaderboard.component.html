@@ -1,3 +1,24 @@
 <p>
   leaderboard works!
 </p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Turns Played</th>
+      <th>Turns Won</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pokemon of pokemons">
+      <td>{{pokemon.name}}</td>
+      <td>{{pokemon.type}}</td>
+      <td>{{pokemon.turnsPlayed}}</td>
+      <td>{{pokemon.turnsWon}}</td>
+      <td>{{getScore(pokemon)}}</td>
+    </tr>
+  </tbody>
+</table>
