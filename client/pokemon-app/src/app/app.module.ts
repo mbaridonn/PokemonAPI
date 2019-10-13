@@ -1,4 +1,4 @@
-import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatGridListModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatGridListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatTableModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -48,7 +48,8 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [PokemonsRepository, PokemonsService],
   bootstrap: [AppComponent]

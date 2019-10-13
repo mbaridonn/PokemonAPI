@@ -1,24 +1,34 @@
-<p>
-  leaderboard works!
-</p>
+<h1 class="centered">
+  Top Pokemons
+</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Turns Played</th>
-      <th>Turns Won</th>
-      <th>Score</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let pokemon of pokemons">
-      <td>{{pokemon.name}}</td>
-      <td>{{pokemon.type}}</td>
-      <td>{{pokemon.turnsPlayed}}</td>
-      <td>{{pokemon.turnsWon}}</td>
-      <td>{{getScore(pokemon)}}</td>
-    </tr>
-  </tbody>
+<table mat-table [dataSource]="pokemons" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let pokemon"> {{pokemon.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Type">
+    <th mat-header-cell *matHeaderCellDef> Type </th>
+    <td mat-cell *matCellDef="let pokemon"> {{pokemon.type}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Turns Played">
+    <th mat-header-cell *matHeaderCellDef> Turns Played </th>
+    <td mat-cell *matCellDef="let pokemon"> {{pokemon.turnsPlayed}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Turns Won">
+    <th mat-header-cell *matHeaderCellDef> Turns Won </th>
+    <td mat-cell *matCellDef="let pokemon"> {{pokemon.turnsWon}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Score">
+    <th mat-header-cell *matHeaderCellDef> Score </th>
+    <td mat-cell *matCellDef="let pokemon"> {{getScore(pokemon)}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
 </table>

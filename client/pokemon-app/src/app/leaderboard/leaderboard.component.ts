@@ -10,16 +10,17 @@ import { PokemonsService } from 'src/services/pokemons.service';
 export class LeaderboardComponent implements OnInit {
 
   private pokemons: IPokemon[];
+  private columnsToDisplay = ['Name', 'Type', 'Turns Played', 'Turns Won', 'Score'];
 
   constructor(private pokemonsService: PokemonsService) { }
 
   ngOnInit() {
     this.pokemonsService.getPokemons().subscribe(
-      pokemons => {this.pokemons = pokemons}
+      pokemons => { this.pokemons = pokemons }
     );
   }
 
-  getScore(pokemon: IPokemon){
+  getScore(pokemon: IPokemon) {
     var score = pokemon.turnsWon / pokemon.turnsPlayed * 5; //score should be between 0 and 5 stars
     var score = score || 0; //fixes if it's Nan
     var scoreRounded = score.toFixed(2); //displays two decimals
