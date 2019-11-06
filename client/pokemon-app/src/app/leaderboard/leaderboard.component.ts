@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IPokemon } from 'src/model/ipokemon';
 import { PokemonsService } from 'src/services/pokemons.service';
+import { MatTableDataSource, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-leaderboard',
@@ -10,14 +11,19 @@ import { PokemonsService } from 'src/services/pokemons.service';
 export class LeaderboardComponent implements OnInit {
 
   private pokemons: IPokemon[];
-  private columnsToDisplay = ['Name', 'Type', 'Turns Played', 'Turns Won', 'Score'];
+  private dataSource: MatTableDataSource<IPokemon>;
+  private columnsToDisplay = ['name', 'type', 'turnsPlayed', 'turnsWon', 'score'];
+  private active = true;
 
   constructor(private pokemonsService: PokemonsService) { }
 
   ngOnInit() {
     this.pokemonsService.getPokemons().subscribe(
-      pokemons => { this.pokemons = pokemons }
-    );
+      pokemons => {
+        this.pokemons = pokemons
+        this.dataSource = new MatTableDataSource(this.pokemons);
+        this.dataSource.sort;
+      });
   }
 
   getScore(pokemon: IPokemon) {
