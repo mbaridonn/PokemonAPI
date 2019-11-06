@@ -15,6 +15,8 @@ export class LeaderboardComponent implements OnInit {
   private columnsToDisplay = ['name', 'type', 'turnsPlayed', 'turnsWon', 'score'];
   private active = true;
 
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+
   constructor(private pokemonsService: PokemonsService) { }
 
   ngOnInit() {
@@ -22,8 +24,21 @@ export class LeaderboardComponent implements OnInit {
       pokemons => {
         this.pokemons = pokemons
         this.dataSource = new MatTableDataSource(this.pokemons);
-        this.dataSource.sort;
+        this.sortDataAccessor()
+        this.dataSource.sort = this.sort;
+        this.sort.sort
       });
+  }
+
+
+  sortDataAccessor() { //enables to sort by score in the table
+    this.dataSource.sortingDataAccessor = (item, property) => {
+      if (property === 'score') {
+        return this.getScore(item);
+      } else {
+        return item[property];
+      }
+    };
   }
 
   getScore(pokemon: IPokemon) {
