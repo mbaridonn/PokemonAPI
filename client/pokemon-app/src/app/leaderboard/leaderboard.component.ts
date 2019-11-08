@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IPokemon } from 'src/model/ipokemon';
 import { PokemonsService } from 'src/services/pokemons.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-leaderboard',
@@ -30,7 +31,6 @@ export class LeaderboardComponent implements OnInit {
       });
   }
 
-
   sortDataAccessor() { //enables to sort by score in the table
     this.dataSource.sortingDataAccessor = (item, property) => {
       if (property === 'score') {
@@ -44,8 +44,8 @@ export class LeaderboardComponent implements OnInit {
   getScore(pokemon: IPokemon) {
     var score = pokemon.turnsWon / pokemon.turnsPlayed * 5; //score should be between 0 and 5 stars
     var score = score || 0; //fixes if it's Nan
-    var scoreRounded = score.toFixed(2); //displays two decimals
-    return scoreRounded || 0;
+    var score = Math.round(score);
+    return score || 0;
   }
 
 }
