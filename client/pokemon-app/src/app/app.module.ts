@@ -1,8 +1,9 @@
-import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatGridListModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { MatMenuModule, MatButtonModule, MatIconModule, MatCardModule, MatToolbarModule, MatGridListModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RatingModule } from 'ng-starrating';
 
 import { AppComponent } from './app.component';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
@@ -14,10 +15,12 @@ import { PokemonsRepository } from 'src/repositories/pokemons-repository';
 import { PokemonsService } from 'src/services/pokemons.service';
 import { VotingComponent } from './voting/voting.component';
 import { HomeComponent } from './home/home.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 const appRoutes: Routes = [
+  {path: '', component: HomeComponent},
   {path: 'vote', component: VotingComponent},
-  {path: '', component: HomeComponent}
+  {path: 'leaderboard', component: LeaderboardComponent}
 ]
 
 @NgModule({
@@ -28,7 +31,8 @@ const appRoutes: Routes = [
     NewPokemonDialogComponent,
     PokemonDialog,
     VotingComponent,
-    HomeComponent
+    HomeComponent,
+    LeaderboardComponent
   ],
   entryComponents: [NewPokemonDialogComponent, PokemonDialog],
   imports: [
@@ -45,7 +49,10 @@ const appRoutes: Routes = [
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatSortModule,
+    RatingModule
   ],
   providers: [PokemonsRepository, PokemonsService],
   bootstrap: [AppComponent]
