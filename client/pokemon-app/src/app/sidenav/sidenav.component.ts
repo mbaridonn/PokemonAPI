@@ -11,7 +11,22 @@ export class SidenavComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
 
-  routes = ["Home","Vote","Leaderboard"]
+  home = {
+    title: "Home",
+    route: "/"
+  }
+
+  vote = {
+    title: "Vote",
+    route: "/vote"
+  }
+
+  leaderboard = {
+    title: "Leaderboard",
+    route: "/leaderboard"
+  }
+
+  routes = [this.home,this.vote,this.leaderboard]
 
   private _mobileQueryListener: () => void;
 
