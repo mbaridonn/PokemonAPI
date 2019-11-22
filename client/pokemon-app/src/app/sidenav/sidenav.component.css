@@ -29,3 +29,15 @@ h1.example-app-name {
        `<body>` to be our scrolling element for mobile layouts. */
     flex: 1 0 auto;
 }
+
+mat-toolbar {
+    background-color: #5085a5;
+}
+
+mat-sidenav {
+    background-color: #f7f9fb;
+}
+
+mat-sidenav-content {
+    background-color: #accce2;
+}

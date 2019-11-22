@@ -13,17 +13,20 @@ export class SidenavComponent implements OnDestroy {
 
   home = {
     title: "Home",
-    route: "/"
+    route: "/",
+    icon: "home"
   }
 
   vote = {
     title: "Vote",
-    route: "/vote"
+    route: "/vote",
+    icon: "where_to_vote"
   }
 
   leaderboard = {
     title: "Leaderboard",
-    route: "/leaderboard"
+    route: "/leaderboard",
+    icon: "star"
   }
 
   routes = [this.home,this.vote,this.leaderboard]
