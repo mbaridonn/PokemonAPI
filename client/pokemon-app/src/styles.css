@@ -1,6 +1,6 @@
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-
-body{
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+body {
     background-color: lightblue;
     font-family: Roboto, Arial, sans-serif;
 }

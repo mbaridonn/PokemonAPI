@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RatingModule } from 'ng-starrating';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
@@ -16,6 +18,7 @@ import { PokemonsService } from 'src/services/pokemons.service';
 import { VotingComponent } from './voting/voting.component';
 import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,7 +35,8 @@ const appRoutes: Routes = [
     PokemonDialog,
     VotingComponent,
     HomeComponent,
-    LeaderboardComponent
+    LeaderboardComponent,
+    SidenavComponent
   ],
   entryComponents: [NewPokemonDialogComponent, PokemonDialog],
   imports: [
@@ -52,7 +56,9 @@ const appRoutes: Routes = [
     FormsModule,
     MatTableModule,
     MatSortModule,
-    RatingModule
+    RatingModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [PokemonsRepository, PokemonsService],
   bootstrap: [AppComponent]
