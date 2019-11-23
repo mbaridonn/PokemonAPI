@@ -21,6 +21,7 @@ export class NewPokemonDialogComponent {
 @Component({
   selector: 'app-pokemon-dialog',
   templateUrl: './pokemon-dialog.html',
+  styleUrls: ['./pokemon-dialog.css']
 })
 export class PokemonDialog {
 
