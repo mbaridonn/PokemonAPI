@@ -36,6 +36,9 @@ export class PokemonDialog {
   constructor(private pokemonsRepository: PokemonsRepository) { }
 
   createPokemon() {
+    if(this.pokemon.photoURL == ""){
+      this.pokemon.photoURL = "assets/images/question_mark_image.png";
+    }
     this.pokemonsRepository.createPokemon(this.pokemon);
   }
 
