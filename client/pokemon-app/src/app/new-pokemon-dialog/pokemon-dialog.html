@@ -1,19 +1,24 @@
 <h1 mat-dialog-title>Create your Pokemon</h1>
+
 <div mat-dialog-content *ngIf="pokemon">
-  <p>Name:</p>
-  <mat-form-field>
-    <input matInput name="name" [(ngModel)]="pokemon.name">
-  </mat-form-field>
-  <p>Type:</p>
-  <mat-form-field>
-    <input matInput name="type" [(ngModel)]="pokemon.type">
-  </mat-form-field>
-  <p>Photo URL:</p>
-  <mat-form-field>
-    <input matInput name="photoURL" [(ngModel)]="pokemon.photoURL">
-  </mat-form-field>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Name" name="name" [(ngModel)]="pokemon.name" autocomplete="off" required>
+            <mat-error>Please enter a pokemon type.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Type" name="type" [(ngModel)]="pokemon.type" autocomplete="off" required>
+            <mat-error *ngIf="true">Please enter a pokemon type.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Photo URL" name="photoURL" [(ngModel)]="pokemon.photoURL" autocomplete="off">
+        </mat-form-field>
+    </form>
 </div>
+
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button cdkFocusInitial (click)="createPokemon()" [mat-dialog-close]="true">Ok</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="createPokemon()" [disabled]="!pokemon.name || !pokemon.type" [mat-dialog-close]="true">Ok</button>
 </div>
