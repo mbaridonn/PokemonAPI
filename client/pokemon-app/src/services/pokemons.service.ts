@@ -9,8 +9,9 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class PokemonsService {
 
-  private pokemonUrl = "http://localhost:8080/pokemons";
-  private randomPokemonsUrl = "http://localhost:8080/randomPokemons";
+  private endpoint = "https://pokevotesapi.herokuapp.com/"
+  private pokemonUrl = this.endpoint + "pokemons";
+  private randomPokemonsUrl = this.endpoint + "randomPokemons";
 
   constructor(private http: HttpClient) {
   }
